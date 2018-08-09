@@ -1,5 +1,7 @@
 {
   "name": "flash-cards",
+  "author": "Jonathan Bredin",
+  "repository": "github:jonathanlb/flash-cards",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
