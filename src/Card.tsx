@@ -21,8 +21,8 @@ export class Card extends React.Component<CardProps, CardState> {
     methodNames.forEach(m => this[m] = this[m].bind(this)); 
   }
 
-  public flip(event: React.FormEvent<EventTarget>) {
-    console.log('click', event);
+  public flip() {
+    console.log('flip');
     this.setState(
       Object.assign(this.state, { showFront: !this.state.showFront } ));
   }
