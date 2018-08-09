@@ -1,0 +1,12 @@
+[ { "front": "hi",
+		"back": "ciao" },
+	{ "front": "bye",
+		"back": "ciao" },
+	{ "front": "good morning",
+		"back": "buongiorno" },
+	{ "front": "good evening",
+		"back": "buonasera" },
+	{ "front": "good night",
+		"back": "buonanotte" },
+	{ "front": "goodbye",
+		"back": "arrivederci" }]

@@ -1,5 +1,10 @@
+import * as Debug from 'debug';
 import * as React from 'react';
 import './Card.css';
+
+const debug = Debug('App');
+// const errors = Debug('App:errors');
+
 
 export interface CardProps {
   front: string;
@@ -22,7 +27,7 @@ export class Card extends React.Component<CardProps, CardState> {
   }
 
   public flip() {
-    console.log('flip');
+    debug('flip');
     this.setState(
       Object.assign(this.state, { showFront: !this.state.showFront } ));
   }
@@ -39,14 +44,14 @@ export class Card extends React.Component<CardProps, CardState> {
   }
 
   public touchEnd(event: React.FormEvent<EventTarget>) {
-    console.log('touchEnd', event);
+    debug('touchEnd', event);
   }
 
   public touchMove(event: React.FormEvent<EventTarget>) {
-    console.log('touchMove', event);
+    debug('touchMove', event);
   }
 
   public touchStart(event: React.FormEvent<EventTarget>) {
-    console.log('touchStart', event);
+    debug('touchStart', event);
   }
 }
