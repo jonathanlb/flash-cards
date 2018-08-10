@@ -35,11 +35,11 @@ export class Card extends React.Component<CardProps, CardState> {
   public render() {
 
     return <div className="flashcard"
-    	onClick={this.flip}
-	onTouchEnd={this.touchEnd}
-	onTouchMove={this.touchMove}
-	onTouchStart={this.touchStart} >
-        { this.state.showFront ? this.props.front : this.props.back }
+			onClick={this.flip}
+			onTouchEnd={this.touchEnd}
+			onTouchMove={this.touchMove}
+			onTouchStart={this.touchStart} >
+			{ this.state.showFront ? this.props.front : this.props.back }
       </div>
   }
 

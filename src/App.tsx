@@ -79,8 +79,8 @@ class App extends React.Component<AppProps, AppState> {
       <div>
         <h1>Flash Cards: { this.state.title }</h1>
       	<Card front={ topCard.front } back={ topCard.back } />
-				<button onClick={ this.advanceCard } >Advance</button>
-				<button onClick={ this.discard } >Discard</button>
+				<button className="button left" onClick={ this.advanceCard } >Advance</button>
+				<button className="button right" onClick={ this.discard } >Discard</button>
       </div>
     );
   }

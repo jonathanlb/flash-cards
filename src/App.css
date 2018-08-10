@@ -18,12 +18,21 @@
 }
 
 .button {
-  border-color: #888;
+	background-color: white;
+  border-color: aliceblue;
   border-radius: 5px;
-  border-style: solid;
-  border-width: 3px;
-  font-size: 18px;
   margin: 5px;
+  padding: 10px;
+}
+
+.left {
+	float: left;
+	margin-left: 10%;
+}
+
+.right {
+	float: right;
+	margin-right: 10%;
 }
 
 .button:hover {
