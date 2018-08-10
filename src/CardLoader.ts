@@ -10,17 +10,27 @@ const dummyCard: CardProps = {
 	front: 'front'
 };
 
+/**
+ * Stub for selecting a file within a directory -- just return the first.
+ */
+function selectFirst(dirPath: string, entries: string[]): Promise<string> {
+	return Promise.resolve(`${dirPath}/${entries[0]}`);
+}
+
 class CardLoader {
 	private path: string;
+	private selectEntry: (dirPath: string, entries: string[]) => Promise<string>;
 
-	constructor(path: string) {
+	constructor(path: string, selectEntry = selectFirst) {
 		this.path = path;
+		this.selectEntry = selectEntry;
 	}	
 
 	/**
 	 * Promise to return a title and the cards selected from the directory.
 	 */
 	public async loadDirectory(dirPath: string) : Promise<[string, CardProps[]]> {
+		debug('loadDirectory', dirPath);
 		return fetch(dirPath).
 			then(response => response.text()).
 			then(content => this.scrapeDirectoryText(content)).
@@ -72,13 +82,6 @@ class CardLoader {
 			return tokens.map(href => 
 				href.replace(/[^"]*"/, '').replace(/\\?"$/, ''));
 		}
-	}
-
-	/**
-	 * Stub for selecting a file within a directory -- so far just return the first.
-	 */
-	public selectEntry(dirPath: string, entries: string[]): string {
-		return `${dirPath}/${entries[0]}`;
 	}
 
 	private titleFromFileName(fileName: string): string {

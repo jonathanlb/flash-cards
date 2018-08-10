@@ -16,7 +16,7 @@ it('advances cards', async () => {
   const div = document.createElement('div');
   const component = ReactDOM.render(
 		<App cardsPromise={ Promise.resolve(['Test Cards', testCards()] as [string, CardProps[]]) } />, 
-		div) as React.Component<AppProps, AppState>;
+		div) as App;
 	await component.props.cardsPromise;
 
 	const topCard = component.state.cards[0];
@@ -35,7 +35,7 @@ it('removes cards', async () => {
   const div = document.createElement('div');
   const component = ReactDOM.render(
 		<App cardsPromise={ Promise.resolve(['Test Cards', testCards()] as [string, CardProps[]]) } />, 
-		div) as React.Component<AppProps, AppState>;
+		div) as App;
 	await component.props.cardsPromise;
 
 	const topCard = component.state.cards[0];
