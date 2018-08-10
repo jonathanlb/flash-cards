@@ -12,6 +12,7 @@
     "react-swipe-event-component": "^0.2.3"
   },
   "scripts": {
+    "coverage": "react-scripts-ts test --coverage --env=jsdom",
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "lint": "tslint --fix src/**/*.ts src/**/*.tsx",

@@ -41,7 +41,7 @@ describe('CardLoader tests', () => {
 		fetchAny.mockResponseOnce(JSON.stringify(twoCards));
 		const loader = new CardLoader('cards/mock_test.json');
 		const loaded = await loader.run();
-		expect(loaded).toEqual(twoCards);
+		expect(loaded).toEqual(['mock test', twoCards]);
 	});
 
 	it('can load from a directory', async () => {
@@ -50,7 +50,7 @@ describe('CardLoader tests', () => {
 
 		const loader = new CardLoader('/cards/');
 		const loaded = await loader.run();
-		expect(loaded).toEqual(twoCards);
+		expect(loaded).toEqual(['Basic Italian', twoCards]);
 	});
 
 	it('can return from empty directory', () => {
