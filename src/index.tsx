@@ -1,42 +1,19 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Select from 'react-select';
 import App from './App';
 import CardLoader from './CardLoader';
+import FileSelector from './FileSelector';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
-function selectEntry(dirPath: string, entries: string[]): Promise<string> {
-	return new Promise((resolve, reject) => {
-		const options = entries.map(e => {
-			return { value: `${dirPath}/${e}`, label: e }
-		});
-		const selectedOption = [options[0]];
+const selectorId = 'fileSelector';
+const cardLoader = new CardLoader(
+	'/cards/',
+	FileSelector('Select a card deck', selectorId));
 
-		function handleChange(selected: any) {
-			ReactDOM.render(
-				<div />,
-				document.getElementById('fileSelector') as HTMLElement
-			);
-			resolve(selected.value);
-		}
-
-		ReactDOM.render(
-			<div>
-				<h2>Select a Card Deck</h2>
-				<Select
-					value={ selectedOption }
-					onChange={ handleChange }
-					options={ options } />
-			</div>,
-  		document.getElementById('fileSelector') as HTMLElement);
-	});
-}
-
-const cardLoader = new CardLoader('/cards/', selectEntry);
 ReactDOM.render(
 	<div>
-		<div id="fileSelector" />
+		<div id={ selectorId } />
   	<App cardsPromise={ cardLoader.run() } />
 	</div>,
   document.getElementById('root') as HTMLElement
