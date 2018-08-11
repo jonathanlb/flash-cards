@@ -35,7 +35,14 @@ class CardLoader {
 			then(response => response.text()).
 			then(content => this.scrapeDirectoryText(content)).
 			then(entries => this.selectEntry(dirPath, entries)).
-			then(entry => this.loadFile(entry));
+      then(entry => {
+        debug('selected', entry);
+        if (entry.endsWith('/')) {
+          return this.loadDirectory(entry);
+        } else {
+          return this.loadFile(entry)
+        }
+      });
 	}
 
 	/**
