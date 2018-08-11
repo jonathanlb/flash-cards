@@ -48,3 +48,14 @@
   padding: 20px;
   vertical-align: top;
 }
+
+.header {
+  margin: 15px;
+  overflow: hidden;
+}
+
+.headerImage {
+  float: right;
+  height: 75px;
+  vertical-align: top;
+}

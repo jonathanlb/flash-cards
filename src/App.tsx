@@ -2,6 +2,7 @@
 import * as React from 'react';
 import './App.css';
 import { Card, CardProps } from './Card';
+import flashImage from './flash.png';
 
 // const debug = Debug('App');
 // const errors = Debug('App:errors');
@@ -77,7 +78,10 @@ class App extends React.Component<AppProps, AppState> {
     const topCard = this.state.cards[0] || { front: '???', back: '!!!' };
     return (
       <div>
-        <h1>Flash Cards: { this.state.title }</h1>
+        <header className="header" >
+          <img src={ flashImage } className="headerImage" />
+          <h1>Flash Cards: { this.state.title }</h1>
+        </header>
       	<Card front={ topCard.front } back={ topCard.back } />
 				<button className="button left" onClick={ this.advanceCard } >Advance</button>
 				<button className="button right" onClick={ this.discard } >Discard</button>
