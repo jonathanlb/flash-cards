@@ -1,7 +1,18 @@
 div.flashcard {
 	border: aliceblue;
+	border-radius: 5px;
 	border-style: solid;
 	margin: 10px;
 	padding: 10px;
 	text-align: center;
+}
+
+div.back {
+  background-color: lightsteelblue;
+  font-style: italic;
+}
+
+div.front {
+  background-color: lightskyblue;
+  font-style: normal;
 }

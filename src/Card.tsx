@@ -22,8 +22,17 @@ export class Card extends React.Component<CardProps, CardState> {
       showFront: true
     };
 
-    const methodNames = ['flip', 'touchEnd', 'touchMove', 'touchStart'];
+    const methodNames = [
+      'getCssClassName', 'flip', 'touchEnd', 'touchMove', 'touchStart'];
     methodNames.forEach(m => this[m] = this[m].bind(this)); 
+  }
+
+  public getCssClassName() {
+    if (this.state.showFront) {
+      return "flashcard front";
+    } else {
+      return "flashcard back";
+    }
   }
 
   public flip() {
@@ -34,7 +43,7 @@ export class Card extends React.Component<CardProps, CardState> {
 
   public render() {
 
-    return <div className="flashcard"
+    return <div className={this.getCssClassName()}
 			onClick={this.flip}
 			onTouchEnd={this.touchEnd}
 			onTouchMove={this.touchMove}
