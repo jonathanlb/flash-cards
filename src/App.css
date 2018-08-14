@@ -25,16 +25,6 @@
   padding: 10px;
 }
 
-.left {
-	float: left;
-	margin-left: 10%;
-}
-
-.right {
-	float: right;
-	margin-right: 10%;
-}
-
 .button:hover {
   background-color: #2196F3;
 }
@@ -47,6 +37,11 @@
   margin: 20px;
   padding: 20px;
   vertical-align: top;
+}
+
+.controlsTable {
+  text-align: center;
+  width: 100%;
 }
 
 .header {

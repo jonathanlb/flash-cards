@@ -7,7 +7,8 @@ const errors = Debug('CardLoader:errors');
 
 const dummyCard: CardProps = {
 	back: 'back',
-	front: 'front'
+	front: 'front',
+  initFlipped: false
 };
 
 /**

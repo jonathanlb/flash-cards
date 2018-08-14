@@ -6,9 +6,9 @@ import { CardProps } from '../Card';
 
 function testCards() {
 	return [
-		{ front: 'a mouse', back: 'un topo' },
-		{ front: 'an elephant', back: 'un elefante' },
-		{ front: 'a lion', back: 'un leone' }
+		{ front: 'a mouse', back: 'un topo', initFlipped: false },
+		{ front: 'an elephant', back: 'un elefante', initFlipped: false },
+		{ front: 'a lion', back: 'un leone', initFlipped: false }
 	];
 }
 
@@ -50,7 +50,6 @@ it('removes cards', async () => {
 
   ReactDOM.unmountComponentAtNode(div);
 });
-
 
 it('renders empty deck', async () => {
   const div = document.createElement('div');

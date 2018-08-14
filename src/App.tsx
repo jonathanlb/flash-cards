@@ -1,10 +1,14 @@
-// import * as Debug from 'debug';
+import * as Debug from 'debug';
 import * as React from 'react';
 import './App.css';
 import { Card, CardProps } from './Card';
 import flashImage from './flash.png';
 
-// const debug = Debug('App');
+// import * as Switch from 'react-switch'; // test OK, build fails, no constructor
+import Switch from 'react-switch'; // build OK, test fails, Element type is invalid, exp string or class/function, got undefined.
+// import { default as Switch } from 'react-switch'; // build OK, test fails
+
+const debug = Debug('App');
 // const errors = Debug('App:errors');
 
 export interface AppProps {
@@ -13,6 +17,7 @@ export interface AppProps {
 
 export interface AppState {
   cards: CardProps[];
+  showFlipped: boolean;
 	title: string;
 };
 
@@ -25,13 +30,15 @@ class App extends React.Component<AppProps, AppState> {
 
   constructor(props: AppProps) {
     super(props);
-    ['advanceCard', 'discard', 'setCards'].
+    ['advanceCard', 'discard', 'handleSideSwitch', 'setCards'].
       forEach(m => this[m] = this[m].bind(this));
-		this.state = { cards: [], title: '' };
+		this.state = { cards: [], showFlipped: false, title: '' };
 
 		// Dummy sample cards.
 		this.setCards('Sample Cards', 
-			[{ front: 'hello', back: 'ciao' }, { front: 'I have', back: 'Io ho' }]);
+			[ { front: 'hello', back: 'ciao', initFlipped: this.state.showFlipped },
+        { front: 'I have', back: 'Io ho', initFlipped: this.state.showFlipped }
+      ]);
 		props.cardsPromise.then(loadedCards => this.setCards(loadedCards[0], loadedCards[1]));
   }
 
@@ -74,17 +81,41 @@ class App extends React.Component<AppProps, AppState> {
 		}
   }  
 
+  public handleSideSwitch(checked: boolean) {
+    debug('handleSideSwitch', checked);
+    this.setState(
+		  Object.assign(this.state, { showFlipped: checked }));
+  }
+
   public render() {
     const topCard = this.state.cards[0] || { front: '???', back: '!!!' };
+    debug('render', this.state);
     return (
       <div>
         <header className="header" >
           <img src={ flashImage } className="headerImage" />
           <h1>Flash Cards: { this.state.title }</h1>
         </header>
-      	<Card front={ topCard.front } back={ topCard.back } />
-				<button className="button left" onClick={ this.advanceCard } >Advance</button>
-				<button className="button right" onClick={ this.discard } >Discard</button>
+      	<Card front={ topCard.front } back={ topCard.back } initFlipped={ this.state.showFlipped } />
+        <table className="controlsTable" ><tbody>
+          <tr>
+				    <td><button className="button" onClick={ this.advanceCard } >Advance</button>
+            </td>
+            <td><label htmlFor="side-switch">
+              <Switch
+                onChange={ this.handleSideSwitch } 
+                checked={ this.state.showFlipped } 
+                offColor="#87cefa"
+                onColor="#c7cefa"
+                height={15}
+                width={40}
+                id="side-switch" />
+              </label>
+            </td>
+				    <td><button className="button" onClick={ this.discard } >Discard</button>
+            </td>
+          </tr>
+        </tbody></table>
       </div>
     );
   }
