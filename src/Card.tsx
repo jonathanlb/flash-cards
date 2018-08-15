@@ -62,9 +62,8 @@ export class Card extends React.Component<CardProps, CardState> {
 			onClick={this.flip}
 			onTouchEnd={this.touchEnd}
 			onTouchMove={this.touchMove}
-			onTouchStart={this.touchStart} >
-			{ content }
-      </div>
+			onTouchStart={this.touchStart} 
+      dangerouslySetInnerHTML={{ __html: content }} />
   }
 
   public shouldShowFront() {
