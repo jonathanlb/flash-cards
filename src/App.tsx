@@ -4,9 +4,21 @@ import './App.css';
 import { Card, CardProps } from './Card';
 import flashImage from './flash.png';
 
-// import * as Switch from 'react-switch'; // test OK, build fails, no constructor
-import Switch from 'react-switch'; // build OK, test fails, Element type is invalid, exp string or class/function, got undefined.
-// import { default as Switch } from 'react-switch'; // build OK, test fails
+// create-react-app uses different import/require resolutions in testing from build.
+// It appears that Jest uses its own import implementation/resolution that does not
+// work with react-switch.
+//
+// test OK, build fails, no constructor
+// import * as Switch from 'react-switch'; 
+//
+// build OK, test fails, Element type is invalid, exp string or class/function, got undefined.
+// import Switch from 'react-switch';
+// import { default as Switch } from 'react-switch';
+// 
+// So, eschew import for require....
+
+// tslint:disable-next-line:variable-name no-var-requires
+const Switch = require('react-switch');
 
 const debug = Debug('App');
 // const errors = Debug('App:errors');
