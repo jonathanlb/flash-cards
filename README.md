@@ -4,7 +4,7 @@ Flash Cards is web-based flash-card study aid.
 ## Installation
 ```bash
 npm run build
-python -m http.server 3000 # for python 3
+python -m http.server 3000 # e.g. for python 3
 # point your browser at http://localhost:3000
 ```
 
@@ -15,7 +15,12 @@ Upon loading the page, you will be prompted to select a deck of cards stored in 
   { "front": "a cat", "back": "un gatto" } ]
 ```
 
-Add subdirectories and json files to suit yourself.  The card fields may contain HTML code.
+Add subdirectories and json files to suit yourself.  The card fields may contain HTML code, which can even play audio upon rendering.
+
+```json
+ { "front": "we go <audio autoplay=\"autoplay\" src=\"audio/we_go.mp3\"></audio>",
+   "back": "andiamo <audio autoplay=\"autoplay\" src=\"audio/andiamo.mp3\"></audio>" }
+```
 
 ## Controls
 <img align="right" width="250px" src="doc/verb-screen.png">

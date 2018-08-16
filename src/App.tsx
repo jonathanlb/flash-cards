@@ -50,12 +50,15 @@ class App extends React.Component<AppProps, AppState> {
 		// Dummy sample cards.
 		this.setCards('Sample Cards', [
       { back: '<u>essere</u><ul style="list-style-type:none"><li>io sono</li><li>tu sei</li><li>lei è</li><li>loro sono</li><li>noi siamo</li><li>voi seite</li></ul>',
-        front: '<u>to be</u><ul style="list-style-type:none"><li>i am</li><li>you are</li><li>she is</li><li>they are</li><li>we are</li><li>you are</li></ul>',
-        initFlipped: this.state.showFlipped },
+        front: '<u>to be</u><ul style="list-style-type:none"><li>i am</li><li>you are</li><li>she is</li><li>they are</li><li>we are</li><li>you are</li></ul>' },
       { back: '<u>andare</u><ul style="list-style-type:none"><li>io vado</li><li>tu vai</li><li>lui va</li><li>loro vanno</li><li>noi andiamo</li><li>voi andate</li></ul>', 
-        front: '<u>to go</u><ul style="list-style-type:none"><li>i go</li><li>you go</li><li>he goes</li><li>they go</li><li>we go</li><li>you go</li></ul>',
-        initFlipped: this.state.showFlipped }
-      ]);
+        front: '<u>to go</u><ul style="list-style-type:none"><li>i go</li><li>you go</li><li>he goes</li><li>they go</li><li>we go</li><li>you go</li></ul>' },
+      { back: 'we go <audio autoplay="autoplay" src="audio/we_go.mp3"></audio>', 
+        front: 'andiamo <audio autoplay="autoplay" src="audio/andiamo.mp3"></audio>' }
+      ].map((card: any) => { 
+        card.initFlipped = false;
+        return card as CardProps;
+      }));
 		props.cardsPromise.then(loadedCards => this.setCards(loadedCards[0], loadedCards[1]));
   }
 
