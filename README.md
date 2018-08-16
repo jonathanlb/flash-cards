@@ -31,5 +31,4 @@ Add subdirectories and json files to suit yourself.  The card fields may contain
 - *discard:* Remove the card until the application is reloaded.
 
 ## Todos
-- Add shuffle cards
 - Advance/flip/discard with swipe.

@@ -43,7 +43,7 @@ class App extends React.Component<AppProps, AppState> {
 
   constructor(props: AppProps) {
     super(props);
-    ['advanceCard', 'discard', 'handleSideSwitch', 'setCards'].
+    ['advanceCard', 'discard', 'handleSideSwitch', 'setCards', 'shuffle'].
       forEach(m => this[m] = this[m].bind(this));
 		this.state = { cards: [], showFlipped: false, title: '' };
 
@@ -132,6 +132,8 @@ class App extends React.Component<AppProps, AppState> {
                 id="side-switch" />
               </label>
             </td>
+				    <td><button className="button" onClick={ this.shuffle } >Shuffle</button>
+            </td>
 				    <td><button className="button" onClick={ this.discard } >Discard</button>
             </td>
           </tr>
@@ -151,6 +153,10 @@ class App extends React.Component<AppProps, AppState> {
 			this.state = newState;
 		}
 	}
+
+  public shuffle() {
+    this.setCards(this.state.title, this.state.cards);
+  }
 
 }
 
