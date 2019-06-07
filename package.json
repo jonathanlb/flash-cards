@@ -8,7 +8,6 @@
     "debug": "^3.2.6",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-scripts-ts": "2.17.0",
     "react-select": "^2.3.0",
     "react-switch": "^3.0.4",
     "shuffle-array": "^1.0.1"
@@ -30,6 +29,7 @@
     "@types/react-select": "^2.0.11",
     "@types/shuffle-array": "0.0.28",
     "jest-fetch-mock": "^1.7.5",
+    "react-scripts-ts": "3.1.0",
     "typescript": "^3.2.4"
   }
 }
